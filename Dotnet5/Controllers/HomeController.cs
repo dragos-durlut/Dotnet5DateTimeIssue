@@ -21,7 +21,17 @@ namespace Dotnet31.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            IndexViewModel indexViewModel = new IndexViewModel();
+            indexViewModel.DateUtc = new DateTime(ticks: 637802866463298955, kind: DateTimeKind.Utc);
+            indexViewModel.DateUtcString = JsonSerializer.Serialize(indexViewModel.DateUtc);
+
+            indexViewModel.DateUnspecified = new DateTime(ticks: 637802866463298955, kind: DateTimeKind.Unspecified);
+            indexViewModel.DateUnspecifiedString = JsonSerializer.Serialize(indexViewModel.DateUnspecified);
+
+            indexViewModel.DateLocal = new DateTime(ticks: 637802866463298955, kind: DateTimeKind.Local);
+            indexViewModel.DateLocalString = JsonSerializer.Serialize(indexViewModel.DateLocal);
+
+            return View("Index", indexViewModel);
         }
 
         public IActionResult Privacy()
@@ -45,6 +55,18 @@ namespace Dotnet31.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
+    public class  IndexViewModel
+    {
+        public DateTime DateUtc { get; set; }
+        public string DateUtcString { get; set; }
+
+        public DateTime DateUnspecified { get; set; }
+        public string DateUnspecifiedString { get; set; }
+
+        public DateTime DateLocal { get; set; }
+        public string DateLocalString { get; set; }
+    }
+
     public class CheckDateViewModel
     {
         public DateTime Date { get; set; }

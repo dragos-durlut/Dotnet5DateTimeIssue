@@ -1,6 +1,34 @@
-﻿@{
+﻿@model Dotnet31.Controllers.IndexViewModel
+@{
     ViewData["Title"] = "Home Page";
 }
+
+<table>
+    <thead>
+        <tr>
+            <td>Date type</td>
+            <td>Date</td>
+            <td>Serialized</td>            
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>UTC</td>
+            <td>@Model.DateUtc</td>
+            <td>@Model.DateUtcString</td>
+        </tr>
+        <tr>
+            <td>Unspecified</td>
+            <td>@Model.DateUnspecified</td>
+            <td>@Model.DateUnspecifiedString</td>
+        </tr>
+        <tr>
+            <td>Local</td>
+            <td>@Model.DateLocal</td>
+            <td>@Model.DateLocalString</td>
+        </tr>
+    </tbody>
+</table>
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
