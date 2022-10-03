@@ -24,3 +24,9 @@ Below are the steps to reproduce the issue if you want to try yourself.
 5) Upgrade the project to .NET 5.
 6) Run the project again, check the type displayed.
 
+| Info | .NET 3.1       | .NET 5                      |
+|-----------------|-----------------|-----------------------------|
+| Date Time Kind Is | Local | Utc |
+| Date Is | 2021-04-20 3:00:00 AM | 2021-04-20 12:00:00 AM |
+| Date String | "2021-04-20T03:00:00+03:00" | "2021-04-20T00:00:00Z" |
+
