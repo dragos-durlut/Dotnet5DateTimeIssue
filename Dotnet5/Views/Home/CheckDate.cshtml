@@ -1,9 +1,12 @@
-﻿
+﻿@model Dotnet31.Controllers.CheckDateViewModel
 @{
     ViewData["Title"] = "CheckDate";
 }
-@model string 
+
 <h1>CheckDate</h1>
 
-<h2> Date Time Kind Is : @Model</h2>
+<h2> Date Time Kind Is : @Model.DateTimeKindString</h2>
 
+<h2> Date  Is : @Model.Date</h2>
+
+<h2> Date  String : @Model.DateString</h2>

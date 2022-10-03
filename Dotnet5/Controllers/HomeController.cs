@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Text.Json;
 
 namespace Dotnet31.Controllers
 {
@@ -29,9 +30,13 @@ namespace Dotnet31.Controllers
         }
 
         public IActionResult CheckDate(DateTime date)
-        {            
-            var dateTimeKind = date.Date.Kind.ToString();
-            return View("CheckDate", dateTimeKind);
+        {
+            CheckDateViewModel checkDateViewModel = new CheckDateViewModel();
+            checkDateViewModel.DateTimeKindString = date.Date.Kind.ToString();
+            checkDateViewModel.DateTimeKind = date.Date.Kind;
+            checkDateViewModel.Date = date;
+            checkDateViewModel.DateString = JsonSerializer.Serialize(date);
+            return View("CheckDate", checkDateViewModel);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
@@ -39,5 +44,12 @@ namespace Dotnet31.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+    }
+    public class CheckDateViewModel
+    {
+        public DateTime Date { get; set; }
+        public string DateString { get; set; }
+        public DateTimeKind DateTimeKind { get; set; }
+        public string DateTimeKindString { get; set; }
     }
 }
